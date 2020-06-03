@@ -1,3 +1,14 @@
+<!--
+Written by Rūdolfs Arvīds Kalniņš
+Created 03.06.2020
+-->
+
+<?php
+  include 'dbh.php';
+  include 'user.php';
+  include 'viewuser.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
 
     <title>Product List</title>
 
@@ -19,7 +30,7 @@
     <!--Main Title div START-->
     <div class="row mt-md-4">
 
-      <div class="col-md-6 ">
+      <div class="col-md-6">
         <h3 class="ml-5">Product List</h3>
       </div>
 
@@ -35,7 +46,10 @@
       <div class="row mt-lg-4 mb-4 justify-content-between">
 
         <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
+          <?php
+            $users = new ViewUser();
+            $users->showAll();
+          ?>
         </div>
 
         <div class="col-lg-2 p-lg-1 m-5 border border-dark">
@@ -99,8 +113,5 @@
     <!--Grid END-->
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
