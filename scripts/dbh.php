@@ -1,5 +1,6 @@
 <?php
 
+// Class for creating connection to mySQL database
 class Dbh {
     // Database connection info
     private $servername;
@@ -8,7 +9,7 @@ class Dbh {
     private $dbname;
     private $port;
 
-    // Create connection to database
+    // Create connection to database and return the created connection
     protected function connect() {
         $this->servername = "localhost";
         $this->username = "root";
@@ -19,6 +20,7 @@ class Dbh {
         // Inialize new connection
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname, $this->port);
 
+        // Throe error if connection to database failed
         if ($conn->connect_error) {
             die("Error occured: " . $conn->connect_error);
         }

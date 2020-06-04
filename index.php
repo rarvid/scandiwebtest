@@ -42,74 +42,10 @@ Created 03.06.2020
     <!--Main Title div END-->
     
     <!--Grid START-->
-      <!--First row START-->
-      <div class="row mt-lg-4 mb-4 justify-content-between">
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
           <?php
             $users = new ViewUser();
             $users->showAll();
           ?>
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-      </div>
-      <!--First row END-->
-
-      <!--Second row START-->
-      <div class="row mt-lg-4 mb-4 justify-content-between">
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-      </div>
-      <!--Second row END-->
-
-      <!--Third row START-->
-      <div class="row mt-lg-4 mb-4 justify-content-between">
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-        <div class="col-lg-2 p-lg-1 m-5 border border-dark">
-          fnirufnfurnf fgnu fu fufh ufhf  fufeuh ueh uohfwp ofphf oufew ff fhf uof ufufuo hfuuor fuohfu
-        </div>
-
-      </div>
-      <!--Third row END-->
     <!--Grid END-->
 
 

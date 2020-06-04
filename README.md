@@ -1,6 +1,6 @@
 # README #
 
-Junior developer test for ScandiWeb \
+Junior developer test for ScandiWeb
 
 ## Specifications
 

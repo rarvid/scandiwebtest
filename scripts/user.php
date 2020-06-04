@@ -1,15 +1,18 @@
 <?php
 
+// Class for obtaining all data from a connected database
 class User extends Dbh{
 
-    // Function gets all users in database
+    // Function gets all data in database and returns data array of database rows
     protected function getAll() {
+
         // SQL query
         $sql = "SELECT * FROM products.producttable";
 
         // Query the database defined in Dbh
         $res = $this->connect()->query($sql);
 
+        // If SQL query failed throw error
         if (!$res) {
             die("Query returned false");
         }
@@ -18,7 +21,7 @@ class User extends Dbh{
         $numberOfRows = $res->num_rows;
 
 
-        // Check if query returned something
+        // Check if database empty
         if ($numberOfRows > 0) {
 
 
@@ -35,5 +38,4 @@ class User extends Dbh{
             die("Empty database");
         }
     }
-
 }
