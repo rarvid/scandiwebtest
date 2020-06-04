@@ -11,7 +11,7 @@ class User extends Dbh{
         $res = $this->connect()->query($sql);
 
         if (!$res) {
-            die("Query returend false bruuuuuuuuh");
+            die("Query returned false");
         }
 
         // Get number of rows in database

@@ -4,9 +4,9 @@ Created 03.06.2020
 -->
 
 <?php
-  include 'dbh.php';
-  include 'user.php';
-  include 'viewuser.php';
+  include 'scripts/dbh.php';
+  include 'scripts/user.php';
+  include 'scripts/viewuser.php';
 ?>
 
 <!DOCTYPE html>

@@ -14,10 +14,10 @@ class Dbh {
         $this->username = "root";
         $this->password = getenv('databasepass');
         $this->dbname = "products";
-        $this->port = "8000";
+        $this->port = "3306";
 
         // Inialize new connection
-        $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname, $this->port);
 
         if ($conn->connect_error) {
             die("Error occured: " . $conn->connect_error);
