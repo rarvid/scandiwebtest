@@ -30,12 +30,16 @@ Created 03.06.2020
     <!--Main Title div START-->
     <div class="row mt-md-4">
 
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h3 class="ml-5">Product List</h3>
       </div>
 
-      <div class="col-md-6">
-        <button type="button" class="btn btn-primary btn-lg float-right mr-5">TEST</button>
+      <div class="col-md-4">
+        <a href=add.php role="button" class="btn btn-primary btn-lg float-right mr-5">Add Item</a>
+      </div>
+
+      <div class="col-md-4">
+        <a href=add.php role="button" class="btn btn-primary btn-lg float-right mr-5">Mass Delete</a>
       </div>
 
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+
 // Class for displaying the gather information from database in rows and divs
 class ViewUser extends User {
 
@@ -57,5 +58,11 @@ class ViewUser extends User {
                 $itemcount = 4;
             }
         }
+        
+        // If last row is not full, close it
+        if ($itemcount != 0){
+            echo '</div>';
+        }
+        
     }
 }
