@@ -7,6 +7,13 @@ class ViewUser extends User {
     // Function display data gather from database
     public function showAll() {
 
+        // Key value array for quantity type based on product type
+        $producTypes = array(
+            "DVD-disc" => "Size: ", 
+            "Book" => "Weight: ", 
+            "Furniture" => "Dimensions: "
+        );
+
         // Define gathered data
         $datas = $this->getAll();
 
@@ -28,22 +35,8 @@ class ViewUser extends User {
                  $data["name"].'<br>'.'<br>'.
                  $data["price"].'<br>'.'<br>';
                  
-            // Check product type and add quantity name based on it
-            switch($data["prodtype"]) {
-
-                case "DVD-disc":
-                    echo "Size: ";
-                    break;
-
-                case "Book":
-                    echo "Weight: ";
-                    break;
-
-                case "Furniture":
-                    echo "Dimensions: ";
-                    break;
-
-            }
+            // Echo quantity type using key value array lookup
+            echo array_search($data["prodtype"], $producTypes);
 
             echo $data["quantity"].'<br>';
             echo '</p>';
