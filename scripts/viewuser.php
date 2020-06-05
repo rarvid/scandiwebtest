@@ -30,6 +30,7 @@ class ViewUser extends User {
 
             // Insert item div with product data
             echo '<div class="col-lg-2 p-lg-2 m-5 border border-dark" align="center">';
+            echo '<div align="left"><input type="checkbox" id="box" name="box" value="Box" align="left"></div>';
             echo '<p>';
             echo $data["SKU"].'<br>'.'<br>'.
                  $data["name"].'<br>'.'<br>'.
