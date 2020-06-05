@@ -7,6 +7,8 @@ Created 03.06.2020
   include 'scripts/dbh.php';
   include 'scripts/user.php';
   include 'scripts/viewuser.php';
+  include 'scripts/delete.php';
+  include 'scripts/count.php'
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,8 @@ Created 03.06.2020
   </head>
 
   <body>
+
+
     <!--Main Title div START-->
     <div class="row mt-md-4">
 
@@ -38,9 +42,9 @@ Created 03.06.2020
         <a href=add.php role="button" class="btn btn-primary btn-lg float-right mr-5">Add Item</a>
       </div>
 
-      <div class="col-md-4">
-        <a href=add.php role="button" class="btn btn-primary btn-lg float-right mr-5">Mass Delete</a>
-      </div>
+      <form name="form" action="" method="post" class="col-md-4">
+        <button type="submit" name="delete"  class="btn btn-primary btn-lg float-right mr-5">Mass Delete</button>
+      </form>
 
     </div>
     <!--Main Title div END-->
@@ -52,6 +56,17 @@ Created 03.06.2020
           ?>
     <!--Grid END-->
 
+    <?php
+
+    if(isset($_POST['delete'])){
+
+      $counter = new Count;
+      $deleter = new Delete;
+
+      $deleter->DeleteItems($counter->ItemHash());
+
+    }
+?>
 
   </body>
 </html>

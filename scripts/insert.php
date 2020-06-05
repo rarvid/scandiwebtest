@@ -1,9 +1,9 @@
 <?php
 
-// Class for obtaining all data from a connected database
+// Class for inserting data into data base from add product page
 class Insert extends Dbh{
 
-    // Function gets all data in database and returns data array of database rows
+    // Functions takes data and insert it to mySQL data base
     public function insertAll($ID, $name, $price, $type, $quantity) {
 
         // SQL query with user input **SUSCEPTIBLE TOO SQL INJECTION MOST LIKELY**

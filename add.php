@@ -28,9 +28,9 @@
         $inserter->insertAll(
           $_POST['ProdID'],
           $_POST['ProdName'],
-          $price = $_POST['ProdPrice'],
-          $type = $_POST['ProductType'],
-          $quantity = $_POST['ProdQ']
+          $_POST['ProdPrice'],
+          $_POST['ProductType'],
+          $_POST['ProdQ']
         );
       }
     ?>
