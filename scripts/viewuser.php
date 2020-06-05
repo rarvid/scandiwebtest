@@ -9,9 +9,9 @@ class ViewUser extends User {
 
         // Key value array for quantity type based on product type
         $producTypes = array(
-            "DVD-disc" => "Size: ", 
-            "Book" => "Weight: ", 
-            "Furniture" => "Dimensions: "
+            "Size: " => "DVD-disc", 
+            "Weight: " => "Book", 
+            "Dimensions: " => "Furniture"
         );
 
         // Define gathered data
@@ -36,7 +36,8 @@ class ViewUser extends User {
                  $data["price"].'<br>'.'<br>';
                  
             // Echo quantity type using key value array lookup
-            echo array_search($data["prodtype"], $producTypes);
+            $quantType = array_search($data["prodtype"], $producTypes);
+            echo $quantType;
 
             echo $data["quantity"].'<br>';
             echo '</p>';
