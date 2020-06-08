@@ -34,29 +34,23 @@ Created 03.06.2020
     <!--Main Title div START-->
     <div class="row mt-md-4">
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h3 class="ml-5">Product List</h3>
       </div>
 
-      <div class="col-md-4">
-        <a href=add.php role="button" class="btn btn-primary btn-lg float-right mr-5">Add Item</a>
+      <div class="col-md-6">
+        <a href=add.php role="button" align="right" class="btn btn-primary btn-lg float-right mr-5">Add Item</a>
       </div>
 
-      <form name="form" action="" method="post" class="col-md-4">
-        <button type="submit" name="delete"  class="btn btn-primary btn-lg float-right mr-5">Mass Delete</button>
-      </form>
 
     </div>
     <!--Main Title div END-->
     
     <!--Grid START-->
-          <?php
-            $users = new ViewUser();
-            $users->showAll();
-          ?>
-    <!--Grid END-->
-
     <?php
+      $users = new ViewUser();
+      $users->showAll();
+    
 
     if(isset($_POST['delete'])){
 
@@ -65,8 +59,12 @@ Created 03.06.2020
 
       $deleter->DeleteItems($counter->ItemHash());
 
+      header("Location: index.php", true, 303);
+
     }
-?>
+    ?>
+
+    <!--Grid END-->
 
   </body>
 </html>

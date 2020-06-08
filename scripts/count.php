@@ -7,7 +7,7 @@ Class Count extends User{
         $datas = $this->getAll();
 
         $infoArray = array();
-        $ID = 1;
+        $ID = 0;
 
         foreach($datas as $data){
             $infoArray[$ID] = $data["SKU"];

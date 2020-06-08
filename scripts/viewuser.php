@@ -19,9 +19,10 @@ class ViewUser extends User {
 
         // Number of items in 1 row
         $itemcount = 4;
-        $ID = 1;
+        $ID = 0;
 
         echo '<form name="form" action="" method="post">';
+        echo '<div class="col-md-12" align="right"><button type="submit" name="delete"  class="btn btn-primary btn-lg mt-2 mr-2" >Mass Delete</button></div>';
         // Using a foreach loop, echo each of the database rows
         foreach ($datas as $data) {
 
@@ -33,7 +34,7 @@ class ViewUser extends User {
 
             // Insert item div with product data
             echo '<div class="col-lg-2 p-lg-2 m-5 border border-dark" align="center">';
-            echo "<div align='left'><input type='checkbox' id=$ID name=$ID value='yes' align='left'></div>";
+            echo "<div align='left'><input type='checkbox' name='checkArray[]' value='$ID' align='left'></div>";
             echo '<p>';
             echo $data["SKU"].'<br>'.'<br>'.
                  $data["name"].'<br>'.'<br>'.
@@ -64,7 +65,7 @@ class ViewUser extends User {
         if ($itemcount != 0){
             echo '</div>';
         }
-
+        
         echo '</form>';
     }
 }
