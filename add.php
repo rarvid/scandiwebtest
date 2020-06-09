@@ -23,8 +23,13 @@
 
   <body>
     <?php
+      // If Add button is pressed
       if(isset($_POST['save'])){
+
+        // Define new instance of Insert class
         $inserter = new Insert();
+
+        // Call insert function with the input field information from user
         $inserter->insertAll(
           $_POST['ProdID'],
           $_POST['ProdName'],
@@ -35,6 +40,7 @@
       }
     ?>
 
+    <!--Title and back button START-->
     <div class="row mt-md-4">
 
       <div class="col-md-6" align="left">
@@ -48,10 +54,13 @@
       </div>
 
     </div>
-
+    <!--Title and back button END-->
+    
+    <!--Container START-->
     <div class="container">
     <div class="row">
 
+        <!--Fillout form START-->
         <form name="form" action="" method="post" class="col-lg-6">
 
             <p>Product ID</p>
@@ -77,7 +86,9 @@
 
             <button class="btn btn-primary" type="submit" name="save">Add</button>
         </form>
+        <!--Fillout form END-->
 
+      <!--Information START-->
         <div class="col-lg-6">
             <h4 align="center">Info</h4>
             <p align="center" class="text-justify">
@@ -88,9 +99,11 @@
                 Please also specify the units used for "DVD-disc" and "Book".
             </p>
         </div>
+      <!--Information END-->
 
     </div>
     </div>
+    <!--Container END-->
 
 
 

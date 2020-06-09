@@ -48,20 +48,26 @@ Created 03.06.2020
     
     <!--Grid START-->
     <?php
+
+      // Get item data from mySQL database and display them
       $users = new ViewUser();
       $users->showAll();
     
 
-    if(isset($_POST['delete'])){
+      // If mass delete button is pressed
+      if(isset($_POST['delete'])){
 
-      $counter = new Count;
-      $deleter = new Delete;
+        // Define instances of classes count and delete
+        $counter = new Count;
+        $deleter = new Delete;
 
-      $deleter->DeleteItems($counter->ItemHash());
+        // Delete class gives delete function, Count class gives current database Item Hash map.
+        $deleter->DeleteItems($counter->ItemHash());
 
-      header("Location: index.php", true, 303);
+        // Refresh page and clean any old requests sent
+        header("Location: index.php", true, 303);
 
-    }
+      }
     ?>
 
     <!--Grid END-->
