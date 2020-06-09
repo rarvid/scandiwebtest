@@ -15,7 +15,7 @@ class Insert extends Dbh{
         ){
 
             //  If any of the paramaters are null or empty then send message and do nothing
-            echo ("Please fill out all field of the form!");
+            echo ("Please fill out all fields of the form!");
 
         } else {
 
