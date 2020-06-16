@@ -61,31 +61,35 @@
     <div class="row">
 
         <!--Fillout form START-->
-        <form name="form" action="" method="post" class="col-lg-6">
+        <form id="form1" action="" method="post"></form>
+        <form id="form2" action="test.php" method="post"></form>
 
+        <div class="col-lg-6"> 
             <p>Product ID</p>
-            <input type="text" name="ProdID" id="ProdID"><br><br>
+            <input type="text" name="ProdID" id="ProdID" form="form1"><br><br>
 
             <p>Product Name</p>
-            <input type="text" name="ProdName" id="ProdName"><br><br>
+            <input type="text" name="ProdName" id="ProdName" form="form1"><br><br>
 
             <p>Product Price</p>
-            <input type="text" name="ProdPrice" id="ProdPrice"><br><br>
+            <input type="text" name="ProdPrice" id="ProdPrice" form="form1"><br><br>
 
             <p>Product Type</p>
-            <select id="ProductType" name="ProductType">
+            <select id="ProductType" name="ProductType" form="form2">
                 <option value="DVD-disc">DVD-disc</option>
                 <option value="Book">Book</option>
                 <option value="Furniture">Furniture</option>
             </select>
+            <button class="btn btn-primary" type="button" name="select" form="form2">Select</button>
             
+
             <br><br>
 
             <p>Product Quantity</p>
-            <input type="text" name="ProdQ" id="ProdQ"><br><br>
+            <input type="text" name="ProdQ" id="ProdQ" form="form1"><br><br>
 
-            <button class="btn btn-primary" type="submit" name="save">Add</button>
-        </form>
+            <button class="btn btn-primary" type="submit" name="save" form="form1">Add</button>
+        </div>
         <!--Fillout form END-->
 
       <!--Information START-->
