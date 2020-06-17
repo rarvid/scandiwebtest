@@ -29,13 +29,29 @@
         // Define new instance of Insert class
         $inserter = new Insert();
 
+        // Extract Array with size values
+        $amountArray = $_POST['ProdQ'];
+
+        // Initialize amount string
+        $amount = "";
+
+        // Append size values with x in between (mostly for furniture)
+        foreach ($amountArray as $el) {
+          if ($el != ""){
+            $amount .= $el . ' x ';
+          }
+        }
+
+        // Trim off tralling "x "
+        $trimmed = rtrim($amount, 'x ');
+
         // Call insert function with the input field information from user
         $inserter->insertAll(
           $_POST['ProdID'],
           $_POST['ProdName'],
           $_POST['ProdPrice'],
           $_POST['ProductType'],
-          $_POST['ProdQ']
+          $trimmed
         );
       }
     ?>
@@ -62,8 +78,7 @@
 
         <!--Fillout form START-->
         <form id="form1" action="" method="post"></form>
-        <form id="form2" action="test.php" method="post"></form>
-
+  
         <div class="col-lg-6"> 
             <p>Product ID</p>
             <input type="text" name="ProdID" id="ProdID" form="form1"><br><br>
@@ -75,42 +90,79 @@
             <input type="text" name="ProdPrice" id="ProdPrice" form="form1"><br><br>
 
             <p>Product Type</p>
-            <select id="ProductType" name="ProductType" form="form2">
+            <select id="ProductType" name="ProductType" onchange="toggle()" form="form1">
                 <option value="DVD-disc">DVD-disc</option>
                 <option value="Book">Book</option>
                 <option value="Furniture">Furniture</option>
             </select>
-            <button class="btn btn-primary" type="button" name="select" form="form2">Select</button>
+            
+            <div id="disc" style="display:block" align="center" class="col-lg-6 p-3 mt-4 border border-dark">
+              Size in Mb or Gb<br>
+              <input type="text" name="ProdQ[]" id="ProdQ[]" form="form1"><br><br>
+              <p align="center">
+                Please, specify the memory capacity in Megabits or Gigabits.<br><br>
+              </p>
+            </div>
+
+            <div id="book" style="display:none" align="center" class="col-lg-6 mt-4 p-3 border border-dark">
+              Weight in Kg<br>
+              <input type="text" name="ProdQ[]" id="ProdQ[]" form="form1"><br><br>
+              <p align="center">
+                Please, specify the book weight in Kilograms.<br><br>
+              </p>
+            </div>
+
+            <div id="furniture" style="display:none" align="center" class="col-lg-6 mt-4 p-3 border border-dark">
+              Height<br>
+              <input type="text" name="ProdQ[]" id="ProdQ[]" form="form1"><br><br>
+              Width<br>
+              <input type="text" name="ProdQ[]" id="ProdQ[]" form="form1"><br><br>
+              Length<br>
+              <input type="text" name="ProdQ[]" id="ProdQ[]" form="form1"><br><br>
+              <p align="center">
+                Please, specify dimensions in the form "H x W x L".<br><br>
+              </p>
+            </div>
+
+            
             
 
             <br><br>
-
-            <p>Product Quantity</p>
-            <input type="text" name="ProdQ" id="ProdQ" form="form1"><br><br>
 
             <button class="btn btn-primary" type="submit" name="save" form="form1">Add</button>
         </div>
         <!--Fillout form END-->
 
-      <!--Information START-->
-        <div class="col-lg-6">
-            <h4 align="center">Info</h4>
-            <p align="center" class="text-justify">
-                After the appropriate product type has been chosen please specify the product quantity in the correct form.<br><br>
-                For "DVD-disc" specify the memory capacity in Megabits or Gigabits.<br>
-                For "Book" specify book weight in Kilograms.<br>
-                For "Furniture" specify dimensions in the form "H x W x L".<br><br>
-                Please also specify the units used for "DVD-disc" and "Book".
-            </p>
-        </div>
-      <!--Information END-->
-
     </div>
     </div>
     <!--Container END-->
 
+    <script>
+    // Javascript function for toggling display boxes for product quantity
+    function toggle() {
+      
+        // Get product type from dropdown menus and extract its text
+        var e = document.getElementById('ProductType');
+        var sel = e.options[e.selectedIndex].text;
 
-
+        // Check which product type was selected and display appropriate box
+        if (sel == 'Book') {
+            book.style.display = 'block';
+            furniture.style.display = 'none';
+            disc.style.display = 'none';
+        }
+        else if (sel == 'Furniture'){
+            book.style.display = 'none';
+            furniture.style.display = 'block';
+            disc.style.display = 'none';
+        }
+        else if (sel == 'DVD-disc') {
+            book.style.display = 'none';
+            furniture.style.display = 'none';
+            disc.style.display = 'block';
+        }
+    }
+  </script>
   </body>
 
 </html>
