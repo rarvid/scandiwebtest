@@ -2,6 +2,10 @@
 <?php
   include 'scripts/dbh.php';
   include 'scripts/insert.php';
+  include_once 'objects/product.php';
+  include 'objects/book.php';
+  include 'objects/disc.php';
+  include 'objects/furniture.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,30 +33,38 @@
         // Define new instance of Insert class
         $inserter = new Insert();
 
-        // Extract Array with size values
-        $amountArray = $_POST['ProdQ'];
+        // Get array with Size/Weight/Dimensions
+        $amount = array_values(array_filter($_POST['ProdQ']));
 
-        // Initialize amount string
-        $amount = "";
+        // Based on type spawn new Disc/Book/Furniture and set Size/Weight/Dimensions
+        if($_POST['ProductType'] == 'DVD-disc'){
+          $product = new Disc();
 
-        // Append size values with x in between (mostly for furniture)
-        foreach ($amountArray as $el) {
-          if ($el != ""){
-            $amount .= $el . ' x ';
-          }
+          $product->setSize($amount[0]);
+
+        }elseif ($_POST['ProductType'] == 'Book') {
+          $product = new Book();
+
+          $product->setWeight($amount[0]);
+
+        }elseif ($_POST['ProductType'] == 'Furniture') {
+          $product = new Furniture();
+
+          $product->setHeight($amount[0]);
+          $product->setWidth($amount[1]);
+          $product->setLength($amount[2]);
+
+          $product->setDimensions();
         }
 
-        // Trim off tralling "x "
-        $trimmed = rtrim($amount, 'x ');
+        // Set other info from user input
+        $product->setSKU($_POST['ProdID']);
+        $product->setName($_POST['ProdName']);
+        $product->setPrice($_POST['ProdPrice']);
+        $product->setType($_POST['ProductType']);
 
-        // Call insert function with the input field information from user
-        $inserter->insertAll(
-          $_POST['ProdID'],
-          $_POST['ProdName'],
-          $_POST['ProdPrice'],
-          $_POST['ProductType'],
-          $trimmed
-        );
+        // Call insert function with the spawned product
+        $inserter->insertAll($product);
       }
     ?>
 

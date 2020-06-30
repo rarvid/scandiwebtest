@@ -1,10 +1,30 @@
 <?php
+include 'objects/product.php';
 
 // Class for inserting data into data base from add product page
 class Insert extends Dbh{
 
     // Functions takes data and insert it to mySQL data base
-    public function insertAll($ID, $name, $price, $type, $quantity) {
+    public function insertAll($product) {
+
+        // Get product information
+        $ID = $product->getSKU();
+        $name = $product->getName();
+        $price = $product->getPrice();
+        $type = $product->getType();
+        $quantity = null;
+
+        // Get product Size, Weight, Dimensions based on type
+        if($type == 'DVD-disc'){
+            $quantity = $product->getSize();
+
+        }elseif ($type == 'Book') {
+            $quantity = $product->getWeight();
+
+        }elseif ($type == 'Furniture') {
+            $quantity = $product->getDimensions();
+
+        }
 
         // Check if any of function paramters are null
         if(

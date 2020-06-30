@@ -1,18 +1,15 @@
 <?php
 
+include_once 'objects/product.php';
+include 'objects/disc.php';
+include 'objects/book.php';
+include 'objects/furniture.php';
 
 // Class for displaying the gather information from database in rows and divs
 class ViewUser extends User {
 
     // Function display data gather from database
     public function showAll() {
-
-        // Key value array for quantity type based on product type
-        $producTypes = array(
-            "Size: " => "DVD-disc", 
-            "Weight: " => "Book", 
-            "Dimensions: " => "Furniture"
-        );
 
         // Define gathered data
         $datas = $this->getAll();
@@ -32,6 +29,29 @@ class ViewUser extends User {
         // Using a foreach loop, echo each of the database rows
         foreach ($datas as $data) {
 
+            // Creating a product with a switch statement based on product type
+            switch ($data["prodtype"]) {
+                case 'DVD-disc':
+                    $product = new Disc();
+                    $product->setSize($data["quantity"]);
+                    break;
+                
+                case 'Book':
+                    $product = new Book();
+                    $product->setWeight($data["quantity"]);
+                    break;
+
+                case 'Furniture':
+                    $product = new Furniture();
+                    $product->setDimensions($data["quantity"]);
+                    break;
+            }
+
+            // Setting all nonspecific product details
+            $product->setSKU($data["SKU"]);
+            $product->setName($data["name"]);
+            $product->setPrice($data["price"]);
+            $product->setType($data["prodtype"]);
 
             // If start of row, echo row start div
             if ($itemcount == 4) {
@@ -44,19 +64,8 @@ class ViewUser extends User {
             // Checkbox. Currently only used for mass delete
             echo "<div align='left'><input type='checkbox' name='checkArray[]' value='$ID' align='left'></div>";
 
-            // Item data
-            echo '<p>';
-            echo $data["SKU"].'<br>'.'<br>'.
-                 $data["name"].'<br>'.'<br>'.
-                 $data["price"].'<br>'.'<br>';
-                 
-            // Echo quantity type using key value array lookup
-            $quantType = array_search($data["prodtype"], $producTypes);
-            echo $quantType;
-
-            echo $data["quantity"].'<br>';
-            echo '</p>';
-            echo '</div>';
+            // Display Product information
+            $product->toHTML();
 
             // Decrement item counter
             $itemcount--;
