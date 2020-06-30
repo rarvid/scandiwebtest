@@ -1,5 +1,6 @@
 <?php
 
+// Disc Object
 class Disc extends Product{
     protected $size;
 

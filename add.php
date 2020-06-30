@@ -37,26 +37,26 @@
         $amount = array_values(array_filter($_POST['ProdQ']));
 
         // Based on type spawn new Disc/Book/Furniture and set Size/Weight/Dimensions
-        if($_POST['ProductType'] == 'DVD-disc'){
-          $product = new Disc();
+        switch ($_POST['ProductType']) {
+          case 'DVD-disc':
+            $product = new Disc();
+            $product->setSize($amount[0]);
+            break;
+          
+          case 'Book':
+            $product = new Book();
+            $product->setWeight($amount[0]);
+            break;
 
-          $product->setSize($amount[0]);
-
-        }elseif ($_POST['ProductType'] == 'Book') {
-          $product = new Book();
-
-          $product->setWeight($amount[0]);
-
-        }elseif ($_POST['ProductType'] == 'Furniture') {
-          $product = new Furniture();
-
-          $product->setHeight($amount[0]);
-          $product->setWidth($amount[1]);
-          $product->setLength($amount[2]);
-
-          $product->setDimensions();
+          case 'Furniture':
+            $product = new Furniture();
+            $product->setHeight($amount[0]);
+            $product->setWidth($amount[1]);
+            $product->setLength($amount[2]);
+            $product->setDimensions();
+            break;    
         }
-
+        
         // Set other info from user input
         $product->setSKU($_POST['ProdID']);
         $product->setName($_POST['ProdName']);

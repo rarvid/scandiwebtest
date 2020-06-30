@@ -1,5 +1,6 @@
 <?php
 
+// Book Object
 class Book extends Product{
     protected $weight;
 
