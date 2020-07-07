@@ -33,33 +33,48 @@
         // Define new instance of Insert class
         $inserter = new Insert();
 
-        // Get array with Size/Weight/Dimensions
-        $amount = array_values(array_filter($_POST['ProdQ']));
+        // Check if quantity fields have been filled out
+        if((
+          $_POST['ProdQ'][0] != "" ||
+          $_POST['ProdQ'][1] != "" ||
+          (
+          $_POST['ProdQ'][2] != "" &&
+          $_POST['ProdQ'][3] != "" &&
+          $_POST['ProdQ'][4] != ""
+          ))  
+        ){ 
 
-        // Format product quantity value if the is more that one value in array
-        if(sizeof($amount) > 1){
-          $amount[0] = $amount[0] . " x " . $amount[1] . " x " . $amount[2];
-        }
+          // Get array with Size/Weight/Dimensions
+          $amount = array_values(array_filter($_POST['ProdQ']));
 
-        // Create array entry for each product class
-        $objArray = array(
-          "DVD-disc" => new Disc(),
-          "Book" => new Book(),
-          "Furniture"=> new Furniture()
-        );
+          // Format product quantity value if the is more that one value in array
+          if(sizeof($amount) > 1){
+            $amount[0] = $amount[0] . " x " . $amount[1] . " x " . $amount[2];
+          }
 
-        // Get correct product class
-        $product = $objArray[$_POST["ProductType"]];
+          // Create array entry for each product class
+          $objArray = array(
+            "DVD-disc" => new Disc(),
+            "Book" => new Book(),
+            "Furniture"=> new Furniture()
+          );
+
+          // Get correct product class
+          $product = $objArray[$_POST["ProductType"]];
         
-        // Set other info from user input
-        $product->setSKU($_POST['ProdID']);
-        $product->setName($_POST['ProdName']);
-        $product->setPrice($_POST['ProdPrice']);
-        $product->setType($_POST['ProductType']);
-        $product->setQuant($amount[0]);
+          // Set other info from user input
+          $product->setSKU($_POST['ProdID']);
+          $product->setName($_POST['ProdName']);
+          $product->setPrice($_POST['ProdPrice']);
+          $product->setType($_POST['ProductType']);
+          $product->setQuant($amount[0]);
 
-        // Call insert function with the spawned product
-        $inserter->insertAll($product);
+          // Call insert function with the spawned product
+          $inserter->insertAll($product);
+
+        }else{
+          echo "Please fill out all fields of the form!";
+        }
       }
     ?>
 
