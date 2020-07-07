@@ -31,13 +31,13 @@ class Furniture extends Product {
         $this->length = $par;
     }
 
-    public function getDimensions(){
+    public function getQuant(){
         return $this->dimensions;
     }
 
     // This functions allows setting the dimensions directly from a parameter or just taking
     // previously set height width and length and combining those
-    public function setDimensions($par = null){
+    public function setQuant($par = null){
         if($par != null){        
             $this->dimensions = $par;
         }else {

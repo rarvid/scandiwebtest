@@ -4,11 +4,11 @@
 class Disc extends Product{
     protected $size;
 
-    public function getSize(){
+    public function getQuant(){
         return $this->size;
     }
 
-    public function setSize($par){
+    public function setQuant($par){
         $this->size = $par;
     }
 

@@ -20,6 +20,13 @@ class ViewUser extends User {
         // ID used for checkbox distinction
         $ID = 0;
 
+        // Create array entry for each product class
+        $objArray = array(
+            "DVD-disc" => new Disc(),
+            "Book" => new Book(),
+            "Furniture"=> new Furniture()
+        );  
+
         // Start of post form. Needed for mass delete checkboxes
         echo '<form name="form" action="" method="post">';
 
@@ -29,29 +36,15 @@ class ViewUser extends User {
         // Using a foreach loop, echo each of the database rows
         foreach ($datas as $data) {
 
-            // Creating a product with a switch statement based on product type
-            switch ($data["prodtype"]) {
-                case 'DVD-disc':
-                    $product = new Disc();
-                    $product->setSize($data["quantity"]);
-                    break;
-                
-                case 'Book':
-                    $product = new Book();
-                    $product->setWeight($data["quantity"]);
-                    break;
+            // Get correct product class
+            $product = $objArray[$data["prodtype"]];
 
-                case 'Furniture':
-                    $product = new Furniture();
-                    $product->setDimensions($data["quantity"]);
-                    break;
-            }
-
-            // Setting all nonspecific product details
+            // Setting all product details
             $product->setSKU($data["SKU"]);
             $product->setName($data["name"]);
             $product->setPrice($data["price"]);
             $product->setType($data["prodtype"]);
+            $product->setQuant($data["quantity"]);
 
             // If start of row, echo row start div
             if ($itemcount == 4) {

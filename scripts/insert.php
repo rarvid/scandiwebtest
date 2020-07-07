@@ -12,19 +12,7 @@ class Insert extends Dbh{
         $name = $product->getName();
         $price = $product->getPrice();
         $type = $product->getType();
-        $quantity = null;
-
-        // Get product Size, Weight, Dimensions based on type
-        if($type == 'DVD-disc'){
-            $quantity = $product->getSize();
-
-        }elseif ($type == 'Book') {
-            $quantity = $product->getWeight();
-
-        }elseif ($type == 'Furniture') {
-            $quantity = $product->getDimensions();
-
-        }
+        $quantity = $product->getQuant();
 
         // Check if any of function paramters are null
         if(

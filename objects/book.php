@@ -4,11 +4,11 @@
 class Book extends Product{
     protected $weight;
 
-    public function getWeight(){
+    public function getQuant(){
         return $this->weight;
     }
 
-    public function setWeight($par){
+    public function setQuant($par){
         $this->weight = $par;
     }
 
